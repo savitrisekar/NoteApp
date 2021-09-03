@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name">NoteApp</string>
+    <string name="tv_signup">SIGN UP</string>
+    <string name="tv_signin">SIGN IN</string>
+    <string name="tv_title_name">Name</string>
+    <string name="tv_title_email">Email</string>
+    <string name="tv_title_psw">Password</string>
+    <string name="tv_dsb_app">Record your Daily Activity</string>
+    <string name="tv_welcome">Welcome back!</string>
+    <string name="tv_title_note">Work</string>
+    <string name="tv_date_note">12 September 2021</string>
+    <string name="tv_save">Save</string>
+    <string name="hint_title">Title</string>
+    <string name="hint_note">Notes</string>
+</resources>
