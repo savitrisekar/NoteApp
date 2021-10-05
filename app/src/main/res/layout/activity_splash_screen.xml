@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="@color/light_pink"
     tools:viewBindingIgnore="false"
-    tools:context=".SplashScreenActivity">
+    tools:context=".view.SplashScreenActivity">
 
     <ImageView
         android:id="@+id/iv_logo"

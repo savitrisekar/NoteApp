@@ -12,7 +12,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.NoteApp">
         <activity
-            android:name=".SplashScreenActivity"
+            android:name=".view.SplashScreenActivity"
             android:screenOrientation="portrait"
             android:theme="@style/Theme.Splash">
             <intent-filter>
@@ -22,15 +22,15 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".RegisterActivity"
+            android:name=".view.RegisterActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".LoginActivity"
+            android:name=".view.LoginActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".home.HomeActivity"
+            android:name=".view.HomeActivity"
             android:screenOrientation="portrait" />
-        <activity android:name=".crud.AddNoteActivity"
+        <activity android:name=".view.AddNoteActivity"
             android:screenOrientation="portrait"/>
     </application>
 

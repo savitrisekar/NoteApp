@@ -1,4 +1,4 @@
-package com.example.noteapp.crud;
+package com.example.noteapp.interfaces;
 
 import com.example.noteapp.model.ItemNote;
 

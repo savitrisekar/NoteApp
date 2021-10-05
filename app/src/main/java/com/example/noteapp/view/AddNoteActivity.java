@@ -1,4 +1,4 @@
-package com.example.noteapp.crud;
+package com.example.noteapp.view;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -9,7 +9,6 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Toast;
 
-import com.example.noteapp.R;
 import com.example.noteapp.databinding.ActivityAddNoteBinding;
 import com.example.noteapp.model.ItemNote;
 import com.google.android.gms.tasks.OnCompleteListener;

@@ -1,4 +1,4 @@
-package com.example.noteapp;
+package com.example.noteapp.view;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -9,7 +9,6 @@ import android.os.Handler;
 import android.view.View;
 
 import com.example.noteapp.databinding.ActivitySplashScreenBinding;
-import com.example.noteapp.home.HomeActivity;
 
 public class SplashScreenActivity extends AppCompatActivity {
 

@@ -1,4 +1,4 @@
-package com.example.noteapp.home;
+package com.example.noteapp.view;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -11,9 +11,9 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Toast;
 
-import com.example.noteapp.crud.AddNoteActivity;
-import com.example.noteapp.crud.INote;
+import com.example.noteapp.interfaces.INote;
 import com.example.noteapp.databinding.ActivityHomeBinding;
+import com.example.noteapp.adapter.HomeAdapter;
 import com.example.noteapp.model.ItemNote;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -34,7 +34,7 @@ public class HomeActivity extends AppCompatActivity implements INote {
     SharedPreferences.Editor editor;
     LinearLayoutManager layoutManager;
     HomeAdapter adapter;
-    ItemNote note;
+    ItemNote itemNote;
     ProgressDialog dialog;
     String id;
 
@@ -52,6 +52,7 @@ public class HomeActivity extends AppCompatActivity implements INote {
         reference = FirebaseDatabase.getInstance().getReference("DataNote").child(id);
 
         itemNotes = new ArrayList<>();
+        binding.rvItemNote.setHasFixedSize(true);
         layoutManager = new LinearLayoutManager(this);
         binding.rvItemNote.setLayoutManager(layoutManager);
 
@@ -68,19 +69,18 @@ public class HomeActivity extends AppCompatActivity implements INote {
 
     }
 
-    private void showDiary() {
-        dialog.setMessage("Please wait, is fetching data. . .");
+    private void showDiary(){
+        dialog.setMessage("Please wait, is fetching data...");
         dialog.show();
         itemNotes.clear();
 
         reference.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                for (DataSnapshot ds : snapshot.getChildren()) {
-                    note = ds.getValue(ItemNote.class);
-                    itemNotes.add(note);
+                for (DataSnapshot ds : snapshot.getChildren()){
+                    itemNote = ds.getValue(ItemNote.class);
+                    itemNotes.add(itemNote);
                 }
-
                 adapter = new HomeAdapter(HomeActivity.this, itemNotes);
                 binding.rvItemNote.setAdapter(adapter);
                 binding.tvEmpty.setVisibility(View.GONE);
@@ -95,15 +95,15 @@ public class HomeActivity extends AppCompatActivity implements INote {
     }
 
     @Override
-    public void updateNote(ItemNote itemNote) {
-        reference.child(note.getUserId()).setValue(itemNote).addOnCompleteListener(new OnCompleteListener<Void>() {
+    public void updateNote(ItemNote note) {
+        reference.child(itemNote.getUserId()).setValue(note).addOnCompleteListener(new OnCompleteListener<Void>() {
             @Override
             public void onComplete(@NonNull Task<Void> task) {
                 if (task.isSuccessful()){
-                    Toast.makeText(HomeActivity.this, "Edited", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(HomeActivity.this, "Update berhasil", Toast.LENGTH_SHORT).show();
                     showDiary();
-                } else {
-                    Toast.makeText(HomeActivity.this, "Failed", Toast.LENGTH_SHORT).show();
+                }else {
+                    Toast.makeText(HomeActivity.this, "Gagal berhasil", Toast.LENGTH_SHORT).show();
                 }
             }
         });
@@ -112,5 +112,11 @@ public class HomeActivity extends AppCompatActivity implements INote {
     @Override
     public void deleteNote(ItemNote note) {
 
+    }
+
+    @Override
+    protected void onRestart() {
+        super.onRestart();
+        showDiary();
     }
 }

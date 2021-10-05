@@ -1,4 +1,4 @@
-package com.example.noteapp;
+package com.example.noteapp.view;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -12,7 +12,6 @@ import android.view.View;
 import android.widget.Toast;
 
 import com.example.noteapp.databinding.ActivityLoginBinding;
-import com.example.noteapp.home.HomeActivity;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
